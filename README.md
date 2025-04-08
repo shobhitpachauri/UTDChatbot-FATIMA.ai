@@ -135,14 +135,6 @@ Access the web interface at `http://localhost:8501`
 - "Compare the different scholarship opportunities available"
 - "How does the application process work for international students?"
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
 ## Acknowledgments
 
 - UTD Jindal School of Management for the academic information
