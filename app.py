@@ -1,6 +1,23 @@
 import streamlit as st
 import requests
 import base64
+import subprocess
+import time
+
+# Function to ensure server is running
+def ensure_server_running():
+    """Ensure that the chatbot server is running."""
+    try:
+        response = requests.get("http://localhost:8000/health", timeout=3)
+        if response.status_code == 200 and response.json().get("status") == "healthy":
+            print("Chatbot server already running.")
+            return
+    except requests.exceptions.RequestException:
+        print("Chatbot server not running. Starting server...")
+
+    # Start chatbot_server.py if not running
+    subprocess.Popen(["python", "chatbot_server.py"])
+    time.sleep(5)  # Give time for server to start
 
 # Set page config
 st.set_page_config(
@@ -8,6 +25,9 @@ st.set_page_config(
     page_icon="🤖",
     layout="wide"
 )
+
+# Ensure the backend server is running
+ensure_server_running()
 
 ##########################################################################
 # UTD color scheme
